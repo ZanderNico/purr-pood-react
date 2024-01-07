@@ -1,2 +1,2 @@
 # purr-pood-react
- frontend petfood website that uses react and tailwind
+petfood website app (frontend) that uses react and tailwind
