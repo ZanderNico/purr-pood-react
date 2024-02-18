@@ -26,9 +26,9 @@ function Navbar() {
           <a href="#" className="text-black">
             About
           </a>
-          <NavLink className="text-black" to="/sign-up">
-                Sign up
-              </NavLink>
+          <NavLink className="text-black" to="/log-in">
+            Login
+          </NavLink>
         </div>
         <div className="md:hidden">
           <button

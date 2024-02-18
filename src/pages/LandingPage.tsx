@@ -1,9 +1,14 @@
+import Buttons from "../components/Buttons";
 import Navbar from "../components/Navbar";
 import Carousel from "../utils/Carousel";
 
 interface CarouselItem {
   imageUrl: string;
 }
+
+const deleteImage = () => {
+
+};
 
 function LandingPage() {
   const carouselItems: CarouselItem[] = [
@@ -16,6 +21,7 @@ function LandingPage() {
     <>
     <Navbar/>
     <Carousel items={carouselItems}/>
+
     </>
   );
 }
