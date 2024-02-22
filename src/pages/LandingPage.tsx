@@ -6,11 +6,9 @@ interface CarouselItem {
   imageUrl: string;
 }
 
-const deleteImage = () => {
-
-};
 
 function LandingPage() {
+  //TODO Dominic paki gawa yung CCS style ng Landing Page deadline nxt week.
   const carouselItems: CarouselItem[] = [
     { imageUrl: "src/assets/petfood carousel/22-VALLEY-0219-Puppy-Posters-1200px-1024x681.jpg" },
     { imageUrl: "src/assets/petfood carousel/715724_cdvilttmwuiepweurrgbivo9w.jpg" },

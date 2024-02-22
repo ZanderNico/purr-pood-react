@@ -1,13 +1,14 @@
 import { useFormik } from "formik";
-import React from "react";
 import { useDispatch } from "react-redux";
-import { createUser } from "../reducers/userSlice";
+import { createUser } from "../slices/userSlice";
 import { userValidationSchema } from "../utils/validationSchema";
 import { AppDispatch } from "../store/store";
 
+
+//TODO Rhenan create CSS styling for this form
 function SignupForm() {
   const dispatch: AppDispatch = useDispatch();
-
+//TODO Rhenan create a delete function and event handler for users here in SignupForm
   const formik = useFormik({
     initialValues: {
       email: "",

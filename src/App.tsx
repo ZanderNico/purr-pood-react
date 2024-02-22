@@ -13,7 +13,6 @@ function App() {
     <BrowserRouter>
        <UserProvider>
       <Routes>
-     
         <Route path="/" element={<LandingPage />} />
         <Route path="/sign-up" element={<SignupPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
@@ -21,7 +20,6 @@ function App() {
         <Route path="/petfood" element={<PetfoodPage/>}/>
         <Route path="/admin-dashboard" element={<AdminPage/>}/>
         <Route path="/user-profile" element={<UserProfilePage/>}/>
-
       </Routes>
       </UserProvider>
     </BrowserRouter>

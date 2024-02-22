@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../reducers/userSlice";
+import { loginUser } from "../slices/userSlice";
 import LoginForm from "../components/LoginForm";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
@@ -9,6 +9,8 @@ import { decodeJwtToken } from "../utils/decodeJwtToken";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
+
+  //handle log-in logic.
   const handleLogin = async (values: { email: string; password: string }) => {
     try {
       const resultAction = await dispatch(loginUser(values));

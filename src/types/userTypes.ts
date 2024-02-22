@@ -21,3 +21,15 @@ export interface UserData {
     email: string;
     password: string;
   }
+
+  export interface UpdateUserName {
+    user_name: string;
+  }
+
+  export interface UpdateUserPassword {
+    password: string;
+  }
+
+  export interface UserId {
+    user_id: number;
+  }
