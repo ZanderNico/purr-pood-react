@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers } from '../reducers/userSlice';
+import { getAllUsers } from '../slices/userSlice';
 import { AppDispatch, RootState } from '../store/store';
 import { GetUserData } from '../types/userTypes';
 

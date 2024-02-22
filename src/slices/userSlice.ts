@@ -1,7 +1,8 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userService from "../services/userService";
-import { GetUserData, UserData } from "../types/userTypes";
+import { GetUserData, UserData, UserId } from "../types/userTypes";
 import { decodeJwtToken } from "../utils/decodeJwtToken";
+
 
 export const createUser = createAsyncThunk(
   "users/createUser",
@@ -31,23 +32,41 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const getUserById = createAsyncThunk("users/getUserById", async (userId: UserId) => {
+  const userById = await userService.getUserById(userId)
+  return userById
+})
+
+export const updateUser = createAsyncThunk(
+  'user/update',
+  async ({ userId, newData }: { userId: UserId; newData: Partial<GetUserData> }) => {
+    try {
+      const updated = await userService.updateUser(userId, newData);
+      return { userId, updated };
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 interface UserSliceState {
   data: GetUserData[];
+  dataById: GetUserData[];
 }
 
 const initialState: UserSliceState = {
   data: [],
+  dataById: [],
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // Define your actions and reducers for user state
   },
   extraReducers: (builder) => {
     builder.addCase(createUser.fulfilled, (state, action) => {
-      // Handle the fulfilled action if needed
+      
     });
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.data = action.payload;
@@ -55,6 +74,16 @@ const userSlice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       console.log(decodeJwtToken(action.payload.token))
       localStorage.setItem('token', action.payload.token);
+    });
+    builder.addCase(getUserById.fulfilled, (state, action) => {
+    
+      state.dataById = action.payload;
+      
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+    
+
+      
     });
   },
 });
