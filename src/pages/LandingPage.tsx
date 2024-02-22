@@ -1,4 +1,3 @@
-import Buttons from "../components/Buttons";
 import Navbar from "../components/Navbar";
 import Carousel from "../utils/Carousel";
 
