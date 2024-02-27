@@ -111,12 +111,38 @@ const updateUser = async (userId: UserId, newData: Partial<GetUserData>) => {
   }
 };
 
+const deleteUser = async (userId: UserId) => {
+    try{
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        throw new Error("Token not found in localStorage");
+      }
+      const response = await axios.delete(
+        `${base_url}/users/delete-users/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      return response.data;
+
+    }catch(error){
+      console.error("Error deleting user:", error);
+      throw error
+    }
+}
+
 const userService = {
   createUser,
   getAllUsers,
   loginUser,
   getUserById,
   updateUser,
+  deleteUser
 };
 
 export default userService;
