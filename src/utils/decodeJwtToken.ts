@@ -1,4 +1,4 @@
-import {JwtPayload, jwtDecode} from 'jwt-decode'; 
+import { jwtDecode} from 'jwt-decode'; 
 
 export const decodeJwtToken = (token: string) => {
   try {
