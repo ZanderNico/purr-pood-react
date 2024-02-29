@@ -5,6 +5,7 @@ import {
   UserData,
   UserId,
 } from "../types/userTypes";
+import getTokenAuth from "../utils/getTokenAuth";
 
 const base_url: string = "http://localhost:5000";
 
@@ -23,11 +24,8 @@ const createUser = async (userData: UserData): Promise<number> => {
 
 const getAllUsers = async (): Promise<GetUserData[]> => {
   try {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      throw new Error("Token not found in localStorage");
-    }
+    //For testing to 
+    const token = getTokenAuth();
 
     const response = await axios.get<GetUserData[]>(`${base_url}/users`, {
       headers: {
