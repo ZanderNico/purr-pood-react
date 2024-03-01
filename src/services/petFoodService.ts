@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PetFoodData } from "../types/petFoodTypes";
+import { GetPetFoodData, PetFoodData } from "../types/petFoodTypes";
 import getTokenAuth from "../utils/getTokenAuth";
 
 const base_url: string = "http://localhost:5000";
@@ -20,15 +20,17 @@ const createPetFood = async (
         },
       }
     );
-
-    return response.data;
+      const petFoodId = response.data.food_id;
+      console.log("CREATED", petFoodId)
+    return petFoodId;
+    
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
 
-const getAllPetFood = async (): Promise<PetFoodData[]> => {
+const getAllPetFood = async (): Promise<GetPetFoodData[]> => {
   try {
     const token = getTokenAuth();
     const response = await axios.get(`${base_url}/petfood`, {
@@ -45,7 +47,7 @@ const getAllPetFood = async (): Promise<PetFoodData[]> => {
   }
 };
 
-const getPetFoodById = async (petFoodId: number): Promise<PetFoodData> => {
+const getPetFoodById = async (petFoodId: number): Promise<GetPetFoodData> => {
   try {
     const token = getTokenAuth();
     const response = await axios.get(`${base_url}/petfood/${petFoodId}`, {
@@ -62,13 +64,13 @@ const getPetFoodById = async (petFoodId: number): Promise<PetFoodData> => {
   }
 };
 
-const uploadPetFoodImage = async (foodId: number, file: File): Promise<string> => {
+const uploadPetFoodImage = async ( file: File, foodId: number): Promise<string> => {
     const token = getTokenAuth();
   
-    const formData = new FormData();
-    formData.append("food_image", file);
-  
     try {
+      const formData = new FormData();
+      formData.append("food_image", file);
+
       const response = await axios.put(
         `${base_url}/petfood/upload-image/${foodId}`,
         formData,
@@ -79,7 +81,7 @@ const uploadPetFoodImage = async (foodId: number, file: File): Promise<string> =
           },
         }
       );
-  
+      console.log("Sa axios ng image to", response.data)
       return response.data;
     } catch (error) {
       console.error(error);

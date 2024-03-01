@@ -71,6 +71,3 @@ function UsersTable() {
 
 export default UsersTable
 
-function deleteUserFromState(userId: any): any {
-  throw new Error('Function not implemented.');
-}
