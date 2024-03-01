@@ -44,7 +44,10 @@ function PetFoodTable() {
         <tbody>
           {petfoods.map((petfood) => (
             <tr key={petfood.food_id}>
-               <td>{petfood.food_image}</td>
+               <td>
+                {/* Display the image using an img tag */}
+                <img src={`http://localhost:5000/petfood/get-image/${petfood.food_id}`} alt={petfood.food_name} style={{ width: '50px', height: '50px' }} />
+              </td>
               <td>{petfood.food_name}</td>
               <td>{petfood.food_description}</td>
               <td>{petfood.category}</td>

@@ -89,6 +89,7 @@ const uploadPetFoodImage = async ( file: File, foodId: number): Promise<string> 
     }
   };
 
+
 const petFoodService = {
   createPetFood,
   getAllPetFood,

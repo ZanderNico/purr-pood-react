@@ -27,6 +27,7 @@ export const uploadPetFoodImage = createAsyncThunk(
   }
 );
 
+
 interface PetFoodSliceState {
   data: PetFoodData[];
   dataById: GetPetFoodData[],
