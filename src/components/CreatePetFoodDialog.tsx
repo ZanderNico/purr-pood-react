@@ -6,6 +6,8 @@ import {
   uploadPetFoodImage,
 } from "../slices/petFoodSlice";
 import { AppDispatch } from "../store/store";
+import UploadPetFoodImage from "./inputs/UploadPetFoodImage";
+import InputFields from "./inputs/InputFields";
 
 interface CreatePetFoodDialogProps {
   onClose: () => void;
@@ -62,67 +64,44 @@ const CreatePetFoodDialog: React.FC<CreatePetFoodDialogProps> = ({
     onClose();
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-        setImageFile(selectedFile);
-    }
+  const handleImageChange = (file: File) => {
+    setImageFile(file);
   };
 
   return (
     <div>
       <h2>Create New Pet Food</h2>
-      <label>Food Name:</label>
-      <input
-        type="text"
+      <InputFields
+        label="Food Name"
         value={newPetFoodData.food_name}
-        onChange={(e) =>
-          setNewPetFoodData({ ...newPetFoodData, food_name: e.target.value })
-        }
+        onChange={(value) => setNewPetFoodData({ ...newPetFoodData, food_name: value })}
       />
-      <label>Food Description:</label>
-      <input
-        type="text"
+      <InputFields
+        label="Food Description"
         value={newPetFoodData.food_description}
-        onChange={(e) =>
-          setNewPetFoodData({
-            ...newPetFoodData,
-            food_description: e.target.value,
-          })
-        }
+        onChange={(value) => setNewPetFoodData({ ...newPetFoodData, food_description: value })}
       />
-      <label>Category:</label>
-      <input
-        type="text"
+      <InputFields
+        label="Category"
         value={newPetFoodData.category}
-        onChange={(e) =>
-          setNewPetFoodData({ ...newPetFoodData, category: e.target.value })
-        }
+        onChange={(value) => setNewPetFoodData({ ...newPetFoodData, category: value })}
       />
-      <label>Price:</label>
-      <input
-        type="number"
+      <InputFields
+        label="Price"
         value={newPetFoodData.price}
-        onChange={(e) =>
-          setNewPetFoodData({
-            ...newPetFoodData,
-            price: Number(e.target.value),
-          })
-        }
-      />
-      <label>Stock Quantity:</label>
-      <input
+        onChange={(value) => setNewPetFoodData({ ...newPetFoodData, price: parseFloat(value) || 0 })}
         type="number"
-        value={newPetFoodData.stock_quantity}
-        onChange={(e) =>
-          setNewPetFoodData({
-            ...newPetFoodData,
-            stock_quantity: Number(e.target.value),
-          })
-        }
       />
-      <label>Food Image:</label>
-      <input type="file" onChange={handleFileChange} accept="image/*" />
+      <InputFields
+        label="Stock Quantity"
+        value={newPetFoodData.stock_quantity}
+        onChange={(value) => setNewPetFoodData({ ...newPetFoodData, stock_quantity: parseInt(value) || 0 })}
+        type="number"
+      />
+      <UploadPetFoodImage
+        label="Food Image"
+        onChange={handleImageChange}
+      />
       <button onClick={handleCreatePetFood}>Create</button>
       <button onClick={onClose}>Cancel</button>
     </div>
