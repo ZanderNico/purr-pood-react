@@ -6,7 +6,7 @@ export const createPetFood = createAsyncThunk(
   "petfood/createPetFood",
   async (petFoodData: PetFoodData) => {
     const petfood = await petFoodService.createPetFood(petFoodData);
-    console.log("CREATEED SA SLICE", petfood)
+    console.log("CREATEED SA SLICE", petfood);
     return petfood;
   }
 );
@@ -27,10 +27,39 @@ export const uploadPetFoodImage = createAsyncThunk(
   }
 );
 
+export const updatePetFood = createAsyncThunk(
+  "petfood/updatePetFood",
+  async ({ foodId, updatedData }: { foodId: number; updatedData: Partial<GetPetFoodData>; }) => {
+    try {
+      const response = await petFoodService.updatePetFood(foodId, updatedData);
+
+      return response;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
+export const deletePetFood = createAsyncThunk(
+  "petfood/deletePetFood", async(foodId: number) => {
+    try{
+    return await petFoodService.deletePetFood(foodId)
+    } catch (error){
+      console.log(error)
+      throw error
+    }
+  }
+)
+
+export const getFoodImageById = createAsyncThunk("petfood/getFoodImageById", async (foodId: number) =>{
+  const petFoodImage = await petFoodService.getFoodImageById(foodId);
+  return petFoodImage
+})
 
 interface PetFoodSliceState {
   data: PetFoodData[];
-  dataById: GetPetFoodData[],
+  dataById: GetPetFoodData[];
 }
 
 const initialState: PetFoodSliceState = {
@@ -53,6 +82,7 @@ const petFoodSlice = createSlice({
       // Handle the result of the image upload if needed
       console.log(action.payload);
     });
+
   },
 });
 

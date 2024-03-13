@@ -89,12 +89,66 @@ const uploadPetFoodImage = async ( file: File, foodId: number): Promise<string> 
     }
   };
 
+  const updatePetFood = async (  foodId: number, updatedData: Partial<GetPetFoodData> ) => {
+    const token = getTokenAuth();
+    try{
+      const response = await axios.put(`${base_url}/petfood/${foodId}`, updatedData, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      
+      return response.data
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
+  const deletePetFood = async (foodId: number): Promise<boolean> => {
+    const token = getTokenAuth();
+    try{
+      const response = await axios.delete(`${base_url}/petfood/delete/${foodId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      return response.data
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
+
+  const getFoodImageById = async (foodId: number) => {
+    try {
+      const response = await axios.get(`${base_url}/petfood/get-image/${foodId}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
 
 const petFoodService = {
   createPetFood,
   getAllPetFood,
   getPetFoodById,
-  uploadPetFoodImage
+  uploadPetFoodImage,
+  updatePetFood,
+  deletePetFood,
+  getFoodImageById
 };
 
 export default petFoodService;
