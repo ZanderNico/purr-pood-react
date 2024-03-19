@@ -4,10 +4,10 @@ import {
   createPetFood,
   getAllPetFood,
   uploadPetFoodImage,
-} from "../slices/petFoodSlice";
-import { AppDispatch } from "../store/store";
-import UploadPetFoodImage from "./inputs/UploadPetFoodImage";
-import InputFields from "./inputs/InputFields";
+} from "../../slices/petFoodSlice";
+import { AppDispatch } from "../../store/store";
+import UploadPetFoodImage from "../inputs/UploadPetFoodImage";
+import InputFields from "../inputs/InputFields";
 
 interface CreatePetFoodDialogProps {
   onClose: () => void;

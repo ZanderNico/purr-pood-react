@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../slices/userSlice";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { decodeJwtToken } from "../utils/decodeJwtToken";
+import getTokenAuth from "../utils/getTokenAuth";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -13,8 +13,8 @@ function LoginPage() {
   //handle log-in logic.
   const handleLogin = async (values: { email: string; password: string }) => {
     try {
-      const resultAction = await dispatch(loginUser(values));
-      const token = localStorage.getItem("token");
+      await dispatch(loginUser(values));
+      const token = getTokenAuth();
 
       if (token !== null) {
         const userData = decodeJwtToken(token);

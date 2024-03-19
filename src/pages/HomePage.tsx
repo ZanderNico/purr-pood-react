@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
-import UpdateUserForm from '../components/UpdateUserForm'
+import UpdateUserForm from '../components/forms/UpdateUserForm'
 import { decodeJwtToken } from '../utils/decodeJwtToken';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
 import { getUserById } from '../slices/userSlice';
+
+import PetfoodCards from '../components/PetfoodCards';
 
 function HomePage() {
   const dispatch: AppDispatch = useDispatch()
@@ -30,6 +32,7 @@ function HomePage() {
     <>
     <div>HomePage</div>
     <UpdateUserForm userId={userId} />
+    <PetfoodCards/>
     </>
   )
 }

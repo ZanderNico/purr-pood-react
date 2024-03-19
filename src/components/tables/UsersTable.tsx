@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { actions, deleteUser, getAllUsers } from '../slices/userSlice';
-import { AppDispatch, RootState } from '../store/store';
-import { GetUserData, UserId } from '../types/userTypes';
+import { actions, deleteUser, getAllUsers } from '../../slices/userSlice';
+import { AppDispatch, RootState } from '../../store/store';
+import { GetUserData, UserId } from '../../types/userTypes';
 
 function UsersTable() {
     const dispatch: AppDispatch = useDispatch();

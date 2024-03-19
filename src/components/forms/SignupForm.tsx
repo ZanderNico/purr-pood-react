@@ -1,8 +1,8 @@
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { createUser } from "../slices/userSlice";
-import { userValidationSchema } from "../utils/validationSchema";
-import { AppDispatch } from "../store/store";
+import { createUser } from "../../slices/userSlice";
+import { userValidationSchema } from "../../utils/validationSchema";
+import { AppDispatch } from "../../store/store";
 
 function SignupForm() {
   const dispatch: AppDispatch = useDispatch();
