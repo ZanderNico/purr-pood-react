@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { AppDispatch } from '../store/store';
+import { AppDispatch } from '../../store/store';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../slices/userSlice';
+import { updateUser } from '../../slices/userSlice';
 
 //{ userId: any } need study bkit ayaw kapag UserId type
 function UpdateUserForm({userId} :{ userId: any } ) {

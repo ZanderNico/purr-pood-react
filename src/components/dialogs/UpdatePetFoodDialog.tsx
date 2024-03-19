@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store/store";
+import { AppDispatch } from "../../store/store";
 import { useState } from "react";
-import { GetPetFoodData } from "../types/petFoodTypes";
-import { getAllPetFood, updatePetFood, uploadPetFoodImage } from "../slices/petFoodSlice";
-import InputFields from "./inputs/InputFields";
-import UploadPetFoodImage from "./inputs/UploadPetFoodImage";
+import { GetPetFoodData } from "../../types/petFoodTypes";
+import { getAllPetFood, updatePetFood, uploadPetFoodImage } from "../../slices/petFoodSlice";
+import InputFields from "../inputs/InputFields";
+import UploadPetFoodImage from "../inputs/UploadPetFoodImage";
 
 interface UpdatePetFoodDialogProps {
   onClose: () => void;

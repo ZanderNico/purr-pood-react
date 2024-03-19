@@ -1,6 +1,6 @@
 import React from 'react'
-import UsersTable from '../components/UsersTable'
-import PetFoodTable from '../components/PetFoodTable'
+import UsersTable from '../components/tables/UsersTable'
+import PetFoodTable from '../components/tables/PetFoodTable'
 
 function AdminPage() {
   return (

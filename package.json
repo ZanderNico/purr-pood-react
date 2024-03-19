@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@reduxjs/toolkit": "^2.2.1",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "axios": "^1.6.7",
     "formik": "^2.4.5",
     "jsonwebtoken": "^9.0.2",

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store/store";
-import { createPetFood, deletePetFood, getAllPetFood, getFoodImageById } from "../slices/petFoodSlice";
-import CreatePetFoodDialog from "./CreatePetFoodDialog";
-import UpdatePetFoodDialog from "./UpdatePetFoodDialog";
+import { AppDispatch, RootState } from "../../store/store";
+import { createPetFood, deletePetFood, getAllPetFood, getFoodImageById } from "../../slices/petFoodSlice";
+import CreatePetFoodDialog from "../dialogs/CreatePetFoodDialog";
+import UpdatePetFoodDialog from "../dialogs/UpdatePetFoodDialog";
 
 function PetFoodTable() {
   const dispatch: AppDispatch = useDispatch();
