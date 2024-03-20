@@ -15,22 +15,19 @@ function Navbar() {
       <div className="mx auto flex justify-between items-center">
         <div className="flex justify-start items-center mx auto ">
           <img className="max-h-14 max-w-14" src={logo} alt="Logo" />
-          <h1 className="font-bold tracking-wider text-yellow-500 text-5xl">
-            FurrFood
+          <h1 className="font-bold tracking-wider text-yellow-500 text-2xl sm:text-3xl md:text-3xl xl:text-4xl">
+            Purr Pood
           </h1>
         </div>
         <div className="hidden md:flex space-x-5">
-          <a href="#" className="text-black">
-            Show now
-          </a>
-          <a href="#" className="text-black">
-            About
-          </a>
+          <button>Edit Profile</button>
+          <button>Cart</button>
           <NavLink className="text-black" to="/log-in">
-            Login
+            Logout
           </NavLink>
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex gap-2">
+          <button>Cart</button>
           <button
             className="text-black focus:outline-none"
             onClick={handleMenuOpen}
@@ -39,14 +36,9 @@ function Navbar() {
           </button>
           {open && (
             <div className="absolute top-16 right-4 bg-gray-700 p-4">
-              <a href="#" className="block text-white mb-2">
-                Shop now
-              </a>
-              <a href="#" className="block text-white mb-2">
-                About
-              </a>
+              <button>edit Profile</button>
               <NavLink className="block text-white" to="/sign-up">
-                Sign up
+                Logout
               </NavLink>
             </div>
           )}
