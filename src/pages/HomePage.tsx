@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from '../store/store';
 import { getUserById } from '../slices/userSlice';
 
 import PetfoodCards from '../components/PetfoodCards';
+import Navbar from '../components/Navbar';
 
 function HomePage() {
   const dispatch: AppDispatch = useDispatch()
@@ -30,7 +31,7 @@ function HomePage() {
     }
   return (
     <>
-    <div>HomePage</div>
+    <Navbar/>
     <UpdateUserForm userId={userId} />
     <PetfoodCards/>
     </>
