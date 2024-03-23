@@ -31,8 +31,7 @@ function HomePage() {
     }
   return (
     <>
-    <Navbar/>
-    <UpdateUserForm userId={userId} />
+    <Navbar showCartButton={true}/>
     <PetfoodCards/>
     </>
   )
