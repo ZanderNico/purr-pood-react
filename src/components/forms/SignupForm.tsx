@@ -26,7 +26,7 @@ function SignupForm() {
         setSignupSuccess(true);
         // window.alert('You have successfully signed up!');
         setTimeout(() => {
-          navigate('/log-in');
+          navigate('/');
         }, 2000);
       } catch (error) {
         console.error('Signup error:', error);
@@ -139,7 +139,7 @@ function SignupForm() {
         </button>
  
         <Link
-            to="/log-in"
+            to="/"
             className="text-yellow-500 hover:text-yellow-600 text-xs italic text-center m-2"
           >
             Go back to log in

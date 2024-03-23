@@ -13,10 +13,9 @@ function App() {
     <BrowserRouter>
        <UserProvider>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LoginPage/>} />
         <Route path="/sign-up" element={<SignupPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
-        <Route path="/log-in" element={<LoginPage/>}/>
         <Route path="/petfood" element={<PetfoodPage/>}/>
         <Route path="/admin-dashboard" element={<AdminPage/>}/>
         <Route path="/user-profile" element={<UserProfilePage/>}/>

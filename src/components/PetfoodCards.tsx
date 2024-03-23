@@ -2,10 +2,18 @@ import React, { useEffect } from "react";
 import { AppDispatch, RootState } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPetFood } from "../slices/petFoodSlice";
+import getTokenAuth from "../utils/getTokenAuth";
+import { decodeJwtToken } from "../utils/decodeJwtToken";
+import { addCart, getCartWithUserById } from "../slices/cartsSlice";
 
 function PetfoodCards() {
   const dispatch: AppDispatch = useDispatch();
   const petfoods = useSelector((state: RootState) => state.petfood.dataById);
+
+  const token = getTokenAuth();
+  const userData = decodeJwtToken(token);
+  //user_id ang laman
+  const userId = userData?.user?.user_id;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +22,12 @@ function PetfoodCards() {
     fetchData();
   }, [dispatch]);
 
+  const handleAddToCart = async(petFoodId: number) => {
+    await dispatch(addCart({customer_id: userId, food_id: petFoodId, quantity:1}))
+    dispatch(getAllPetFood());
+    dispatch(getCartWithUserById(userId));
+  }
+
   const petfoodsByCategory: { [key: string]: any[] } = {};
   petfoods.forEach((petfood) => {
     if (!petfoodsByCategory[petfood.category]) {
@@ -21,6 +35,8 @@ function PetfoodCards() {
     }
     petfoodsByCategory[petfood.category].push(petfood);
   });
+
+
 
   return (
     <div className="bg-white">
@@ -35,7 +51,7 @@ function PetfoodCards() {
           <h2 className="text-lg font-bold mt-6">{category}</h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {petfoods.map((petfood) => (
-              <div className="group relative" key={petfood.food_id}>
+              <div className="" key={petfood.food_id}>
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
                   <img
                     src={`http://localhost:5000/petfood/get-image/${petfood.food_id}`}
@@ -61,7 +77,8 @@ function PetfoodCards() {
                     </p>
                   </div>
                 </div>
-                <button className="w-full bg-gray-200 group-hover:bg-green-500 transition duration-300 ease-in-out">
+                <button className="w-full bg-gray-200 hover:bg-green-500 transition duration-300 ease-in-out"
+                onClick={() => {handleAddToCart(petfood.food_id)}}>
                   add to cart
                 </button>
               </div>

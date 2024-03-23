@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CreateCartsData, GetCartsData } from "../types/cartsTypes";
+import { CreateCartsData, GetCartsData, UserWithCart } from "../types/cartsTypes";
 import cartsService from "../services/cartsService";
 
 export const addCart = createAsyncThunk(
   "carts/addToCart",
   async (cartData: CreateCartsData) => {
     const carts = await cartsService.addCarts(cartData);
+    console.log("SA SLICE ADDCART", carts)
     return carts;
   }
 );
@@ -47,7 +48,21 @@ export const getUsersWithCartsAndPetFood = createAsyncThunk(
       const usersWithCartsAndPetFood =
         await cartsService.getUsersWithCartsAndPetFood();
       console.log(usersWithCartsAndPetFood);
+      console.log("SA SLICE GETUSERCART", usersWithCartsAndPetFood)
       return usersWithCartsAndPetFood;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const getCartWithUserById = createAsyncThunk(
+  "carts/getCartWithUserById",
+  async (userId: number) => {
+    try {
+      const cartWithUser = await cartsService.getCartWithUserById(userId);
+      console.log("SA SLICE", cartWithUser)
+      return cartWithUser;
     } catch (error) {
       throw error;
     }
@@ -66,18 +81,20 @@ export const deleteCart = createAsyncThunk(
     }
   );
 
-interface PetFoodSliceState {
+interface CartSliceState {
   createData: CreateCartsData[];
   getData: GetCartsData[];
   cartsWithPetFood: any;
-  usersWithCartsAndPetFood: any;
+  usersWithCartsAndPetFood: UserWithCart[];
+  usersWithCartsAndPetFoodById: UserWithCart;
 }
 
-const initialState: PetFoodSliceState = {
+const initialState: CartSliceState = {
   createData: [],
   getData: [],
   cartsWithPetFood: null,
-  usersWithCartsAndPetFood: null,
+  usersWithCartsAndPetFood: [],
+  usersWithCartsAndPetFoodById: {},
 };
 
 const cartSlice = createSlice({
@@ -98,6 +115,11 @@ const cartSlice = createSlice({
       .addCase(deleteCart.fulfilled, (state, action) => {
         // Remove the deleted cart from state
         state.createData = state.getData.filter((cart) => cart.cart_id !== action.payload);
+      })
+      .addCase(getCartWithUserById.fulfilled, (state, action) => {
+
+        state.usersWithCartsAndPetFoodById = action.payload;
+        console.log("Updated usersWithCartsAndPetFoodById:", state.usersWithCartsAndPetFoodById);
       })
       
   },
