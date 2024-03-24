@@ -1,11 +1,8 @@
 import { useState } from "react";
 import logo from "../assets/good-pet-food.svg";
 import { FiEdit, FiShoppingCart, FiMenu } from "react-icons/fi";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CartMenu from "./cart-menu/CartMenu";
-import UpdateUserForm from "./forms/UpdateUserForm";
-import getTokenAuth from "../utils/getTokenAuth";
-import { decodeJwtToken } from "../utils/decodeJwtToken";
 import UpdateProfileDialog from "./dialogs/UpdateProfileDialog";
 
 function Navbar({ showCartButton = true }) {

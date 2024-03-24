@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import getTokenAuth from "../../utils/getTokenAuth";
 import { decodeJwtToken } from "../../utils/decodeJwtToken";
 import { AppDispatch, RootState } from "../../store/store";

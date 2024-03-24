@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersWithCartsAndPetFood } from "../../slices/cartsSlice";
-import { actions, deleteUser } from "../../slices/userSlice";
+import { deleteUser } from "../../slices/userSlice";
 import { FaTrash } from 'react-icons/fa';
 
 function UserWIthCartsTable() {
