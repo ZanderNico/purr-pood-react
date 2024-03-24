@@ -47,7 +47,7 @@ function UpdateUserForm({ userId }: { userId: any }) {
           type="text"
           value={newUsername}
           onChange={(e: any) => setNewUsername(e.target.value)}
-          className="block w-full rounded-md border-0 py-1 pl-2 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 py-1 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
         />
       </label>
       <button
@@ -65,7 +65,7 @@ function UpdateUserForm({ userId }: { userId: any }) {
           type="password"
           value={newPassword}
           onChange={(e: any) => setNewPassword(e.target.value)}
-          className="block w-full rounded-md border-0 py-1 pl-2 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 py-1 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
         />
       </label>
       <button
