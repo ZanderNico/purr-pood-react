@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import UpdateUserForm from '../components/forms/UpdateUserForm'
 import { decodeJwtToken } from '../utils/decodeJwtToken';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
@@ -31,9 +30,9 @@ function HomePage() {
     }
   return (
     <>
-    <Navbar showCartButton={true}/>
-    <PetfoodCards/>
-    </>
+    <Navbar showCartButton={true} />
+    <PetfoodCards />
+  </>
   )
 }
 

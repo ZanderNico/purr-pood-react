@@ -41,11 +41,11 @@ function CartMenu() {
   }
 
   return (
-    <div className="absolute top-16 right-0 left-0 sm:right-1 md:right-4 md:left-auto bg-gray-400 p-4 z-10">
+    <div className="absolute top-16 right-0 left-0 sm:right-1 md:right-4 md:left-auto bg-gray-400 p-4 z-10 rounded-md">
       <div className="bg-white rounded-lg shadow-lg p-3 w-full overflow-auto">
       {userWithCarts.carts?.map((cart) => (
             <div
-              className="flex items-center justify-between py-3"
+              className="flex items-center justify-evenly py-3"
               key={cart.cart_id}
             >
               <div className="flex items-center gap-2">

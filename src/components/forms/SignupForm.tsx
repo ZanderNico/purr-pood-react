@@ -37,16 +37,10 @@ function SignupForm() {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex flex-col max-w-fit border border-solid justify-center items-center bg-gray-200 px-5 py-2 rounded-md"
+      className="flex flex-col max-w-fit justify-center items-center  px-5 py-2"
     >
-      <img className="max-h-16 max-w-16" src={logo} alt="Logo" />
-      <div>
-        <h2 className="text-xl text-yellow-400 font-bold">SIGN-UP NOW</h2>
-      </div>
+
       <div className="flex flex-col gap-2">
-        <label htmlFor="email" className="font-medium">
-          Email:
-        </label>
         <input
           type="text"
           id="email"
@@ -54,14 +48,12 @@ function SignupForm() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
-          className="block w-full rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
+          placeholder="Enter your email here..."
+          className="block w-full sm:w-48 md:w-52 lg:w-56 xl:w-64 rounded-full border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
         />
         {formik.touched.email && formik.errors.email ? (
-          <p className="text-red-600 text-xs italic">{formik.errors.email}</p>
+          <p className="text-red-500 text-xs italic">{formik.errors.email}</p>
         ) : null}
-        <label htmlFor="password" className="font-medium">
-          Password:
-        </label>
         <input
           type="password"
           id="password"
@@ -69,17 +61,15 @@ function SignupForm() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-          className="block w-full rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
+          placeholder="Enter your password here..."
+          className="block w-full rounded-full border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
         />
         {formik.touched.password && formik.errors.password ? (
-          <p className="text-red-600 text-xs italic">
+          <p className="text-red-500 text-xs italic">
             {formik.errors.password}
           </p>
         ) : null}
 
-        <label htmlFor="user_name" className="font-medium">
-          Username:
-        </label>
         <input
           type="text"
           id="user_name"
@@ -87,15 +77,16 @@ function SignupForm() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.user_name}
-          className="block w-full rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
+          placeholder="Enter your name here..."
+          className="block w-full rounded-full border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-yellow-600 sm:text-sm sm:leading-6"
         />
         {formik.touched.user_name && formik.errors.user_name ? (
-          <p className="text-red-600 text-xs italic">
+          <p className="text-red-500 text-xs italic">
             {formik.errors.user_name}
           </p>
         ) : null}
 
-        <label htmlFor="user_role" className="font-medium">
+        <label htmlFor="user_role" className="font-medium text-yellow-400">
           Choose a role:
         </label>
         <div className="flex items-center gap-5">
@@ -109,7 +100,7 @@ function SignupForm() {
           onChange={formik.handleChange}
           className="mr-1"
         />
-        <label htmlFor="customer" >Customer</label>
+        <label htmlFor="customer" className="text-gray-500">Customer</label>
         </div>
         <div>
         <input
@@ -121,7 +112,7 @@ function SignupForm() {
           onChange={formik.handleChange}
           className="mr-1"
         />
-        <label htmlFor="admin">Admin</label>
+        <label htmlFor="admin" className="text-gray-500">Admin</label>
         </div>
       </div>
         {formik.touched.user_role && formik.errors.user_role ? (
@@ -133,14 +124,14 @@ function SignupForm() {
   <>
         <button
           type="submit"
-          className="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
+          className="flex w-full justify-center rounded-full bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
         >
           Sign Up
         </button>
  
         <Link
             to="/"
-            className="text-yellow-500 hover:text-yellow-600 text-xs italic text-center m-2"
+            className="text-yellow-400 hover:text-yellow-500 text-xs italic text-center mt-16"
           >
             Go back to log in
           </Link>
