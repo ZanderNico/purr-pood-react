@@ -64,7 +64,7 @@ const CreatePetFoodDialog: React.FC<CreatePetFoodDialogProps> = ({
   };
 
   return (
-<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
   <div className="bg-white p-6 rounded-md shadow-md">
     <h2 className="font-bold text-center mb-4">Create New Pet Food</h2>
     <div className="flex flex-col gap-4">
@@ -114,13 +114,13 @@ const CreatePetFoodDialog: React.FC<CreatePetFoodDialogProps> = ({
       <UploadPetFoodImage label="Food Image" onChange={handleImageChange} />
       <button
         onClick={handleCreatePetFood}
-        className="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
+        className="flex w-full justify-center rounded-full bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
       >
         Create
       </button>
       <button
         onClick={onClose}
-        className="bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded w-full"
+        className="bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded-full w-full"
       >
         Cancel
       </button>
